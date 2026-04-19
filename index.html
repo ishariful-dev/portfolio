@@ -1,714 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Developer Portfolio</title>
+<title>Shariful Islam — Web Developer Portfolio</title>
+<meta name="description" content="WordPress & web developer based in Dhaka, Bangladesh. Production-ready websites for clients across the UK, US, Canada, and beyond.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0d0d0d;
-    --surface: #161616;
-    --card: #1c1c1c;
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(255,255,255,0.18);
-    --text: #f0ede8;
-    --muted: #888;
-    --accent: #c9a96e;
-    --accent-dim: rgba(201,169,110,0.12);
-    --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-weight: 300;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(13,13,13,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; }
-  .nav-links a {
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 3rem 4rem;
-    max-width: 1100px; margin: 0 auto;
-    position: relative;
-  }
-  .hero-inner { max-width: 680px; }
-  .hero-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 32px; height: 1px;
-    background: var(--accent);
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 460px;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-  .hero-stats {
-    display: flex; gap: 3rem;
-    border-top: 1px solid var(--border);
-    padding-top: 2rem;
-  }
-  .hero-stat-num {
-    font-family: var(--font-display);
-    font-size: 2.4rem;
-    font-weight: 300;
-    color: var(--text);
-    display: block;
-  }
-  .hero-stat-lbl {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* SECTION */
-  section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 6rem 3rem;
-  }
-  .section-header {
-    display: flex; align-items: baseline; gap: 1.5rem;
-    margin-bottom: 3.5rem;
-  }
-  .section-num {
-    font-family: var(--font-display);
-    font-size: 0.9rem;
-    color: var(--accent);
-    font-style: italic;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 300;
-    letter-spacing: -0.01em;
-  }
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    margin-bottom: 4px;
-  }
-
-  /* PROJECT GRID */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .project-card {
-    background: var(--card);
-    overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: background 0.3s;
-    position: relative;
-  }
-  .project-card:hover { background: #222; }
-  .project-card:hover .project-thumb img { transform: scale(1.04); }
-  .project-card:hover .project-arrow { opacity: 1; transform: translate(0,0); }
-
-  .project-thumb {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: #111;
-    position: relative;
-  }
-  .project-thumb img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  .thumb-fallback {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 8px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
-  }
-  .thumb-fallback .site-initial {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--accent);
-    opacity: 0.6;
-  }
-  .thumb-fallback .site-url {
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .project-body { padding: 1.4rem 1.5rem 1.6rem; }
-
-  .project-tags {
-    display: flex; flex-wrap: wrap; gap: 6px;
-    margin-bottom: 0.8rem;
-  }
-  .project-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .project-tag.accent {
-    border-color: rgba(201,169,110,0.3);
-    color: var(--accent);
-  }
-
-  .project-name {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  .project-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
-  .project-url {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    opacity: 0.7;
-  }
-  .project-arrow {
-    position: absolute; top: 1rem; right: 1rem;
-    width: 32px; height: 32px;
-    background: var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0;
-    transform: translate(4px,-4px);
-    transition: all 0.25s ease;
-  }
-  .project-arrow svg { width: 14px; height: 14px; fill: #0d0d0d; }
-
-  /* STACK */
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 4rem;
-  }
-  .stack-item {
-    background: var(--card);
-    padding: 1.4rem 1.2rem;
-    text-align: center;
-    transition: background 0.2s;
-  }
-  .stack-item:hover { background: #222; }
-  .stack-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .stack-name { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; }
-
-  /* CONTACT */
-  .contact-block {
-    border: 1px solid var(--border);
-    padding: 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 2rem;
-    background: var(--surface);
-  }
-  .contact-text h3 {
-    font-family: var(--font-display);
-    font-size: 2rem; font-weight: 300;
-    margin-bottom: 0.5rem;
-  }
-  .contact-text p { font-size: 0.85rem; color: var(--muted); }
-  .contact-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 0.9rem 2rem;
-    background: var(--accent);
-    color: #0d0d0d;
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .contact-btn:hover { opacity: 0.85; }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 3rem;
-    max-width: 1100px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  footer p { font-size: 0.75rem; color: var(--muted); }
-
-  @media (max-width: 640px) {
-    nav { padding: 1rem 1.2rem; }
-    .nav-links { display: none; }
-    .hero { padding: 6rem 1.2rem 3rem; }
-    section { padding: 4rem 1.2rem; }
-    .hero-stats { gap: 1.5rem; }
-    .contact-block { padding: 1.8rem; }
-    footer { padding: 1.2rem; }
-  }
-</style>
+<link rel="stylesheet" href="/dist/output.css">
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="#">Portfolio</a>
-  <div class="nav-links">
-    <a href="#work">Work</a>
-    <a href="#stack">Stack</a>
-    <a href="#contact">Contact</a>
+<div class="navbar fixed top-0 left-0 right-0 z-50 bg-base-100/85 backdrop-blur-md border-b border-base-content/10 px-5">
+  <div class="flex-1">
+    <a class="font-display text-2xl font-normal tracking-wide" href="#">Portfolio</a>
   </div>
-</nav>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal gap-4 text-xs tracking-widest uppercase">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">WordPress & Web Developer</div>
-    <h1>Building <em>websites</em><br>that work.</h1>
-    <p class="hero-sub">
-      Delivering production-ready websites for clients across Bangladesh, the UK, and beyond — from restaurant platforms to SaaS products and CRM tools.
-    </p>
-    <div class="hero-stats">
-      <div>
-        <span class="hero-stat-num">16+</span>
-        <span class="hero-stat-lbl">Projects delivered</span>
-      </div>
-      <div>
-        <span class="hero-stat-num">US·UK·CA·BD</span>
-        <span class="hero-stat-lbl">Clients served</span>
-      </div>
-      <div>
-        <span class="hero-stat-num">5+</span>
-        <span class="hero-stat-lbl">Industries</span>
+<div class="hero min-h-screen">
+  <div class="hero-content max-w-6xl w-full px-6 md:px-12">
+    <div class="max-w-2xl">
+      <div class="hero-eyebrow">WordPress &amp; Web Developer</div>
+      <h1 class="font-display text-6xl md:text-8xl font-light leading-tight tracking-tight mb-6">Building <span class="italic text-warning">websites</span><br>that work.</h1>
+      <p class="text-base text-base-content/60 max-w-md leading-relaxed mb-10">
+        Delivering production-ready websites for clients across Bangladesh, the UK, and beyond — from restaurant platforms to SaaS products and CRM tools.
+      </p>
+      <div class="stats stats-horizontal bg-transparent border-t border-base-content/10 rounded-none pt-8">
+        <div class="stat px-0 pr-12">
+          <div class="stat-value font-display text-4xl font-light">16+</div>
+          <div class="stat-desc text-xs tracking-widest uppercase">Projects delivered</div>
+        </div>
+        <div class="stat px-0 pr-12">
+          <div class="stat-value font-display text-4xl font-light">US·UK·CA·BD</div>
+          <div class="stat-desc text-xs tracking-widest uppercase">Clients served</div>
+        </div>
+        <div class="stat px-0">
+          <div class="stat-value font-display text-4xl font-light">5+</div>
+          <div class="stat-desc text-xs tracking-widest uppercase">Industries</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- WORK -->
-<section id="work">
+<section id="work" class="section-wrap">
   <div class="section-header">
     <span class="section-num">01</span>
     <h2 class="section-title">Selected Work</h2>
-    <div class="section-line"></div>
+    <div class="section-rule"></div>
   </div>
 
-  <div class="projects-grid">
+  <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
-    <!-- Azuma Sushi -->
-    <a class="project-card" href="https://azumasushi.co.uk" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://azumasushi.co.uk"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>A</span><span class=\'site-url\'>azumasushi.co.uk</span></div>'"
-          alt="Azuma Sushi" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://azumasushi.co.uk" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://azumasushi.co.uk" data-fallback="A|azumasushi.co.uk" alt="Azuma Sushi" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Restaurant</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">UK Client</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Azuma Sushi &amp; Restaurant</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Authentic Japanese restaurant site with online menu PDF, table reservation system, and gallery — built for a UK-based client.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">azumasushi.co.uk</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Restaurant</span>
-          <span class="project-tag">WordPress</span>
-          <span class="project-tag">UK Client</span>
-        </div>
-        <div class="project-name">Azuma Sushi & Restaurant</div>
-        <div class="project-desc">Authentic Japanese restaurant site with online menu PDF, table reservation system, and gallery — built for a UK-based client.</div>
-        <div class="project-url">azumasushi.co.uk</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Umar & Amayrah -->
-    <a class="project-card" href="https://umarandamayrah.co.uk" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://umarandamayrah.co.uk"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>U</span><span class=\'site-url\'>umarandamayrah.co.uk</span></div>'"
-          alt="Umar & Amayrah" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://umarandamayrah.co.uk" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://umarandamayrah.co.uk" data-fallback="U|umarandamayrah.co.uk" alt="Umar & Amayrah" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Personal / Event</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">UK Client</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Umar &amp; Amayrah</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Elegant personal occasion website crafted for a UK-based client — event-style web presence with beautiful design.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">umarandamayrah.co.uk</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Personal / Event</span>
-          <span class="project-tag">WordPress</span>
-          <span class="project-tag">UK Client</span>
-        </div>
-        <div class="project-name">Umar & Amayrah</div>
-        <div class="project-desc">Elegant personal occasion website crafted for a UK-based client — event-style web presence with beautiful design.</div>
-        <div class="project-url">umarandamayrah.co.uk</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Boyshero -->
-    <a class="project-card" href="https://boyshero.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://boyshero.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>B</span><span class=\'site-url\'>boyshero.com</span></div>'"
-          alt="Boyshero" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://boyshero.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://boyshero.com" data-fallback="B|boyshero.com" alt="Boyshero" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Digital Marketing Agency</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Boyshero</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Full-service digital marketing agency website with service pages, branding showcase, and lead generation flow.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">boyshero.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Digital Marketing Agency</span>
-          <span class="project-tag">WordPress</span>
-        </div>
-        <div class="project-name">Boyshero</div>
-        <div class="project-desc">Full-service digital marketing agency website with service pages, branding showcase, and lead generation flow.</div>
-        <div class="project-url">boyshero.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Sparkit -->
-    <a class="project-card" href="https://sparkit.net.bd" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://sparkit.net.bd"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>S</span><span class=\'site-url\'>sparkit.net.bd</span></div>'"
-          alt="Sparkit" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://sparkit.net.bd" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://sparkit.net.bd" data-fallback="S|sparkit.net.bd" alt="Spark IT" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">ISP Provider</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">Bangladesh</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Spark IT</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Internet service provider platform with packages, coverage maps, promotional offers, and customer support portal.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">sparkit.net.bd</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">ISP Provider</span>
-          <span class="project-tag">WordPress</span>
-          <span class="project-tag">Bangladesh</span>
-        </div>
-        <div class="project-name">Spark IT</div>
-        <div class="project-desc">Internet service provider platform with packages, coverage maps, promotional offers, and customer support portal.</div>
-        <div class="project-url">sparkit.net.bd</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- DigiWebNex -->
-    <a class="project-card" href="https://digiwebnex.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://digiwebnex.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>D</span><span class=\'site-url\'>digiwebnex.com</span></div>'"
-          alt="DigiWebNex" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://digiwebnex.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://digiwebnex.com" data-fallback="D|digiwebnex.com" alt="DigiWebNex" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Agency + Multi-portal</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">DigiWebNex</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Web agency site with two sub-portals — a doctor appointment portal and a task management application.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">digiwebnex.com · doctor.digiwebnex.com · task.digiwebnex.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Agency + Multi-portal</span>
-          <span class="project-tag">WordPress</span>
-        </div>
-        <div class="project-name">DigiWebNex</div>
-        <div class="project-desc">Web agency site with two sub-portals — a doctor appointment portal and a task management application.</div>
-        <div class="project-url">digiwebnex.com · doctor.digiwebnex.com · task.digiwebnex.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Aestoraliving -->
-    <a class="project-card" href="https://aestoraliving.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://aestoraliving.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>A</span><span class=\'site-url\'>aestoraliving.com</span></div>'"
-          alt="Aestoraliving" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://aestoraliving.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://aestoraliving.com" data-fallback="A|aestoraliving.com" alt="Aestoraliving" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Lifestyle Blog</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">SEO</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Aestoraliving</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Home &amp; kitchen lifestyle blog with category-based architecture, clean reading UX, and SEO-optimized structure.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">aestoraliving.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Lifestyle Blog</span>
-          <span class="project-tag">WordPress</span>
-          <span class="project-tag">SEO</span>
-        </div>
-        <div class="project-name">Aestoraliving</div>
-        <div class="project-desc">Home & kitchen lifestyle blog with category-based architecture, clean reading UX, and SEO-optimized structure.</div>
-        <div class="project-url">aestoraliving.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Kelma -->
-    <a class="project-card" href="https://kelma.io" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://kelma.io"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>K</span><span class=\'site-url\'>kelma.io</span></div>'"
-          alt="Kelma" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://kelma.io" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://kelma.io" data-fallback="K|kelma.io" alt="Kelma" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Hosting SaaS</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">Cloudflare</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">Arabic Web</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Kelma — Arabic WP Hosting</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">High-performance WordPress &amp; WooCommerce hosting platform for the Arabic web, with custom Kelma Panel and enterprise Cloudflare integration.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">kelma.io</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Hosting SaaS</span>
-          <span class="project-tag">Cloudflare</span>
-          <span class="project-tag">Arabic Web</span>
-        </div>
-        <div class="project-name">Kelma — Arabic WP Hosting</div>
-        <div class="project-desc">High-performance WordPress & WooCommerce hosting platform for the Arabic web, with custom Kelma Panel and enterprise Cloudflare integration.</div>
-        <div class="project-url">kelma.io</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Levrg -->
-    <a class="project-card" href="https://getlevrg.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://getlevrg.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>L</span><span class=\'site-url\'>getlevrg.com</span></div>'"
-          alt="Levrg" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://getlevrg.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://getlevrg.com" data-fallback="L|getlevrg.com" alt="Getlevrg" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">SaaS / Growth Tool</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Getlevrg</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Growth and leverage SaaS platform with a conversion-focused landing page and streamlined onboarding flow.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">getlevrg.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">SaaS / Growth Tool</span>
-        </div>
-        <div class="project-name">Getlevrg</div>
-        <div class="project-desc">Growth and leverage SaaS platform with a conversion-focused landing page and streamlined onboarding flow.</div>
-        <div class="project-url">getlevrg.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Pipeline Signals -->
-    <a class="project-card" href="https://pipelinesignals.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://pipelinesignals.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>P</span><span class=\'site-url\'>pipelinesignals.com</span></div>'"
-          alt="Pipeline Signals" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://pipelinesignals.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://pipelinesignals.com" data-fallback="P|pipelinesignals.com" alt="Pipeline Signals" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Sales Intelligence SaaS</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">B2B</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Pipeline Signals</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">B2B sales signal and pipeline intelligence platform for revenue teams to track, prioritize, and act on deals.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">pipelinesignals.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Sales Intelligence SaaS</span>
-          <span class="project-tag">B2B</span>
-        </div>
-        <div class="project-name">Pipeline Signals</div>
-        <div class="project-desc">B2B sales signal and pipeline intelligence platform for revenue teams to track, prioritize, and act on deals.</div>
-        <div class="project-url">pipelinesignals.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- Empellor CRM -->
-    <a class="project-card" href="https://empellorcrm.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://empellorcrm.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>E</span><span class=\'site-url\'>empellorcrm.com</span></div>'"
-          alt="Empellor CRM" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://empellorcrm.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://empellorcrm.com" data-fallback="E|empellorcrm.com" alt="Empellor CRM" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">CRM Platform</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">SaaS</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">Enterprise</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">Empellor CRM</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Enterprise CRM platform website — structured for B2B buyers with feature breakdowns and demo request conversion flow.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">empellorcrm.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">CRM Platform</span>
-          <span class="project-tag">SaaS</span>
-          <span class="project-tag">Enterprise</span>
-        </div>
-        <div class="project-name">Empellor CRM</div>
-        <div class="project-desc">Enterprise CRM platform website — structured for B2B buyers with feature breakdowns and demo request conversion flow.</div>
-        <div class="project-url">empellorcrm.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- The Sales Factory -->
-    <a class="project-card" href="https://www.thesalesfactory.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://www.thesalesfactory.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>S</span><span class=\'site-url\'>thesalesfactory.com</span></div>'"
-          alt="The Sales Factory" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://www.thesalesfactory.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://www.thesalesfactory.com" data-fallback="S|thesalesfactory.com" alt="The Sales Factory" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Sales Consulting Agency</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">The Sales Factory</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Outsourced sales and consulting agency site with service pages, team showcase, and client acquisition funnel.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">thesalesfactory.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Sales Consulting Agency</span>
-        </div>
-        <div class="project-name">The Sales Factory</div>
-        <div class="project-desc">Outsourced sales and consulting agency site with service pages, team showcase, and client acquisition funnel.</div>
-        <div class="project-url">thesalesfactory.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- NAZMC -->
-    <a class="project-card" href="https://nazmc.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://nazmc.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>N</span><span class=\'site-url\'>nazmc.com</span></div>'"
-          alt="NAZMC" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://nazmc.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://nazmc.com" data-fallback="N|nazmc.com" alt="NAZMC" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Corporate</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">NAZMC</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Professional corporate website with strong branding, structured service pages, and contact infrastructure.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">nazmc.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Corporate</span>
-          <span class="project-tag">WordPress</span>
-        </div>
-        <div class="project-name">NAZMC</div>
-        <div class="project-desc">Professional corporate website with strong branding, structured service pages, and contact infrastructure.</div>
-        <div class="project-url">nazmc.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- FameDevBD -->
-    <a class="project-card" href="https://famedevbd.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://famedevbd.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>F</span><span class=\'site-url\'>famedevbd.com</span></div>'"
-          alt="FameDevBD" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://famedevbd.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://famedevbd.com" data-fallback="F|famedevbd.com" alt="FameDevBD" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Dev Agency</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">Bangladesh</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">FameDevBD</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Complete web development agency site — portfolio, team, service details, pricing plans, and blog all built from scratch.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">famedevbd.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Dev Agency</span>
-          <span class="project-tag">WordPress</span>
-          <span class="project-tag">Bangladesh</span>
-        </div>
-        <div class="project-name">FameDevBD</div>
-        <div class="project-desc">Complete web development agency site — portfolio, team, service details, pricing plans, and blog all built from scratch.</div>
-        <div class="project-url">famedevbd.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
-    <!-- FameTerra -->
-    <a class="project-card" href="https://fameterra.com" target="_blank">
-      <div class="project-thumb">
-        <img
-          src="https://image.thum.io/get/width/600/crop/400/noanimate/https://fameterra.com"
-          onerror="this.parentElement.innerHTML='<div class=\'thumb-fallback\'><span class=\'site-initial\'>F</span><span class=\'site-url\'>fameterra.com</span></div>'"
-          alt="FameTerra" loading="lazy">
+    <a class="card bg-base-200 hover:bg-base-300 transition-colors overflow-hidden group no-underline text-inherit" href="https://fameterra.com" target="_blank" rel="noopener noreferrer">
+      <figure class="h-52 bg-base-300 overflow-hidden relative"><img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="https://image.thum.io/get/width/600/crop/400/noanimate/https://fameterra.com" data-fallback="F|fameterra.com" alt="FameTerra" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <div class="card-body p-6">
+        <div class="flex flex-wrap gap-1 mb-2"><span class="badge badge-sm border-warning/30 text-warning uppercase tracking-wider">Global Brand</span><span class="badge badge-sm badge-ghost uppercase tracking-wider">WordPress</span></div>
+        <h3 class="card-title font-display text-xl font-normal leading-relaxed">FameTerra</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed">Global digital brand and web presence built for international reach with modern layout and strong visual identity.</p>
+        <p class="text-xs tracking-widest text-warning opacity-70">fameterra.com</p>
       </div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag accent">Global Brand</span>
-          <span class="project-tag">WordPress</span>
-        </div>
-        <div class="project-name">FameTerra</div>
-        <div class="project-desc">Global digital brand and web presence built for international reach with modern layout and strong visual identity.</div>
-        <div class="project-url">fameterra.com</div>
-      </div>
-      <div class="project-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="absolute top-4 right-4 w-8 h-8 bg-warning flex items-center justify-center opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"><svg class="w-3.5 h-3.5 fill-base-300" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
     </a>
 
   </div>
 </section>
 
 <!-- STACK -->
-<section id="stack">
+<section id="stack" class="section-wrap">
   <div class="section-header">
     <span class="section-num">02</span>
     <h2 class="section-title">Tech Stack</h2>
-    <div class="section-line"></div>
+    <div class="section-rule"></div>
   </div>
 
-  <div class="stack-grid">
-    <div class="stack-item"><div class="stack-icon">🔷</div><div class="stack-name">WordPress</div></div>
-    <div class="stack-item"><div class="stack-icon">🐘</div><div class="stack-name">PHP</div></div>
-    <div class="stack-item"><div class="stack-icon">⚡</div><div class="stack-name">JavaScript</div></div>
-    <div class="stack-item"><div class="stack-icon">🎨</div><div class="stack-name">HTML5 / CSS3</div></div>
-    <div class="stack-item"><div class="stack-icon">🔧</div><div class="stack-name">Elementor / Divi</div></div>
-    <div class="stack-item"><div class="stack-icon">🛒</div><div class="stack-name">WooCommerce</div></div>
-    <div class="stack-item"><div class="stack-icon">🗄️</div><div class="stack-name">MySQL</div></div>
-    <div class="stack-item"><div class="stack-icon">🎯</div><div class="stack-name">Figma</div></div>
-    <div class="stack-item"><div class="stack-icon">🚀</div><div class="stack-name">cPanel / Hosting</div></div>
-    <div class="stack-item"><div class="stack-icon">📈</div><div class="stack-name">SEO Optimization</div></div>
-    <div class="stack-item"><div class="stack-icon">⚙️</div><div class="stack-name">Performance Tuning</div></div>
+  <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-16">
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🔷</div><div class="text-xs tracking-widest uppercase text-base-content/60">WordPress</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🐘</div><div class="text-xs tracking-widest uppercase text-base-content/60">PHP</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">⚡</div><div class="text-xs tracking-widest uppercase text-base-content/60">JavaScript</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🎨</div><div class="text-xs tracking-widest uppercase text-base-content/60">HTML5 / CSS3</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🔧</div><div class="text-xs tracking-widest uppercase text-base-content/60">Elementor / Divi</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🛒</div><div class="text-xs tracking-widest uppercase text-base-content/60">WooCommerce</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🗄️</div><div class="text-xs tracking-widest uppercase text-base-content/60">MySQL</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🎯</div><div class="text-xs tracking-widest uppercase text-base-content/60">Figma</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🚀</div><div class="text-xs tracking-widest uppercase text-base-content/60">cPanel / Hosting</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">📈</div><div class="text-xs tracking-widest uppercase text-base-content/60">SEO Optimization</div></div></div>
+    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">⚙️</div><div class="text-xs tracking-widest uppercase text-base-content/60">Performance Tuning</div></div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="section-wrap">
   <div class="section-header">
     <span class="section-num">03</span>
     <h2 class="section-title">Get in Touch</h2>
-    <div class="section-line"></div>
+    <div class="section-rule"></div>
   </div>
-  <div class="contact-block">
-    <div class="contact-text">
-      <h3>Available for new projects.</h3>
-      <p>Based in Dhaka, Bangladesh · Open to remote work worldwide</p>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start;">
-      <a class="contact-btn" href="mailto:ishariful.info@gmail.com" style="width:100%; text-align:center;">
-        ✉ ishariful.info@gmail.com
-      </a>
-      <a class="contact-btn" href="https://www.linkedin.com/in/ishariful-islam/" target="_blank" style="width:100%; text-align:center; background:#0a66c2; color:#fff;">
-        in  LinkedIn Profile
-      </a>
-      <a class="contact-btn" href="https://wa.me/8801521394158" target="_blank" style="width:100%; text-align:center; background:#25d366; color:#0d0d0d;">
-        💬 WhatsApp: 01521394158
-      </a>
+  <div class="card bg-base-200 border border-base-content/10">
+    <div class="card-body p-12 flex-row items-center justify-between flex-wrap gap-8">
+      <div>
+        <h3 class="card-title font-display text-5xl font-light mb-2">Available for new projects.</h3>
+        <p class="text-sm text-base-content/60">Based in Dhaka, Bangladesh · Open to remote work worldwide</p>
+      </div>
+      <div class="card-actions flex-col items-stretch gap-3 min-w-[280px]">
+        <a class="btn btn-warning tracking-widest uppercase text-sm" href="mailto:ishariful.info@gmail.com">✉ ishariful.info@gmail.com</a>
+        <a class="btn bg-[#0a66c2] hover:bg-[#0a66c2]/80 text-white border-0 tracking-widest uppercase text-sm" href="https://www.linkedin.com/in/ishariful-islam/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">in</span> LinkedIn Profile</a>
+        <a class="btn bg-[#25d366] hover:bg-[#25d366]/80 text-base-content border-0 tracking-widest uppercase text-sm" href="https://wa.me/8801521394158" target="_blank" rel="noopener noreferrer">💬 WhatsApp: 01521394158</a>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2026 · Web Developer Portfolio · Dhaka, Bangladesh</p>
-  <p style="font-size:0.7rem; color: #444;">Built with HTML · CSS · No frame
+<footer class="footer footer-horizontal border-t border-base-content/10 py-6 px-6 md:px-12 max-w-6xl mx-auto justify-between items-center flex-wrap gap-4">
+  <aside><p class="text-xs text-base-content/60">© 2026 · Web Developer Portfolio · Dhaka, Bangladesh</p></aside>
+  <nav><p class="text-xs text-base-content/40">Built with HTML · Tailwind CSS · DaisyUI</p></nav>
+</footer>
+
+<script>
+// Replace broken thumbnail with a lettered fallback. One delegated listener, no per-img inline handlers.
+document.addEventListener('error', (e) => {
+  const img = e.target;
+  if (!(img instanceof HTMLImageElement) || !img.dataset.fallback) return;
+  const [letter, domain] = img.dataset.fallback.split('|');
+  const div = document.createElement('div');
+  div.className = 'img-fallback';
+  const l = document.createElement('span'); l.className = 'fallback-letter'; l.textContent = letter;
+  const d = document.createElement('span'); d.className = 'fallback-domain'; d.textContent = domain;
+  div.append(l, d);
+  img.replaceWith(div);
+}, true);
+</script>
+
+</body>
+</html>

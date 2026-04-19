@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: dark --default;
+}
+
+@theme {
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); }
+}
+
+@layer components {
+  /* Layout helpers kept minimal — most visual structure is from DaisyUI components */
+  .section-wrap   { @apply max-w-6xl mx-auto py-24 px-6 md:px-12; }
+  .section-header { @apply flex items-baseline gap-6 mb-14; }
+  .section-num    { @apply font-display text-base text-warning italic; }
+  .section-title  { @apply font-display text-4xl md:text-5xl font-light tracking-tight; }
+  .section-rule   { @apply flex-1 h-px bg-base-content/10 mb-1; }
+
+  /* Hero eyebrow line accent */
+  .hero-eyebrow { @apply text-xs tracking-widest uppercase text-warning mb-6 flex items-center gap-3; }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--color-warning);
+  }
+
+  /* Image fallback */
+  .img-fallback    { @apply w-full h-full flex items-center justify-center flex-col gap-2 bg-gradient-to-br from-base-300 to-base-content/20; }
+  .fallback-letter { @apply font-display text-5xl font-light text-warning opacity-60; }
+  .fallback-domain { @apply text-xs text-base-content/60 tracking-wide; }
+}

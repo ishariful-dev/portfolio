@@ -5,43 +5,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shariful Islam — Web Developer Portfolio</title>
 <meta name="description" content="WordPress & web developer based in Dhaka, Bangladesh. Production-ready websites for clients across the UK, US, Canada, and beyond.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shariful Islam — Web Developer Portfolio">
+<meta property="og:description" content="WordPress & web developer based in Dhaka, Bangladesh. Production-ready websites that load fast, rank, and convert.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shariful Islam — Web Developer Portfolio">
+<meta name="twitter:description" content="Production-ready WordPress & web builds for founders, restaurants, and SaaS teams.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/dist/output.css">
+<link rel="stylesheet" href="dist/output.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shariful Islam",
+  "jobTitle": "Web Developer",
+  "description": "WordPress & web developer building production-ready websites for clients across the UK, US, Canada, and Bangladesh.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD" },
+  "email": "ishariful.info@gmail.com",
+  "sameAs": ["https://www.linkedin.com/in/ishariful-islam/"]
+}
+</script>
 </head>
 <body>
 
-<div class="navbar fixed top-0 left-0 right-0 z-50 bg-base-100/85 backdrop-blur-md border-b border-base-content/10 px-5">
+<div class="navbar fixed top-0 left-0 right-0 z-50 bg-base-100/85 backdrop-blur-md border-b border-base-content/10 px-6 sm:px-10 lg:px-16">
   <div class="flex-1">
     <a class="font-display text-2xl font-normal tracking-wide" href="#">Portfolio</a>
   </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal gap-4 text-xs tracking-widest uppercase">
+  <div class="flex-none flex items-center">
+    <ul class="menu menu-horizontal gap-4 text-xs tracking-widest uppercase hidden md:flex items-center">
+      <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
-      <li><a href="#stack">Stack</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#why">Results</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
+    <a class="btn btn-warning btn-sm tracking-widest uppercase text-xs ml-3 shrink-0" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like a quote for a website." target="_blank" rel="noopener noreferrer">Get a Quote</a>
   </div>
 </div>
 
 <!-- HERO -->
-<div class="hero min-h-screen">
+<div class="hero min-h-screen pt-20">
   <div class="hero-content max-w-6xl w-full px-6 md:px-12">
-    <div class="max-w-2xl">
-      <div class="hero-eyebrow">WordPress &amp; Web Developer</div>
-      <h1 class="font-display text-6xl md:text-8xl font-light leading-tight tracking-tight mb-6">Building <span class="italic text-warning">websites</span><br>that work.</h1>
-      <p class="text-base text-base-content/60 max-w-md leading-relaxed mb-10">
-        Delivering production-ready websites for clients across Bangladesh, the UK, and beyond — from restaurant platforms to SaaS products and CRM tools.
+    <div class="max-w-3xl">
+      <h1 class="font-display text-6xl md:text-8xl font-light leading-tight tracking-tight mb-6">Websites that <span class="italic text-warning">convert</span><br>visitors into customers.</h1>
+      <p class="text-base md:text-lg text-base-content/60 max-w-xl leading-relaxed mb-10">
+        Production-ready WordPress &amp; web builds for founders, restaurants, and SaaS teams — launched in 2&ndash;4 weeks, built to rank, load fast, and drive real results.
       </p>
+      <div class="flex flex-wrap gap-3 mb-6">
+        <a class="btn btn-warning tracking-widest uppercase text-sm" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like a free quote for a website project." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">💬</span> Get a Free Quote on WhatsApp</a>
+        <a class="btn btn-ghost border border-base-content/20 tracking-widest uppercase text-sm" href="#work">See My Work →</a>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-base-content/50 tracking-wide mb-10">
+        <span class="text-warning" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+        <span>Trusted by UK, US, CA &amp; BD clients</span>
+      </div>
       <div class="stats stats-horizontal bg-transparent border-t border-base-content/10 rounded-none pt-8">
         <div class="stat px-0 pr-12">
           <div class="stat-value font-display text-4xl font-light">16+</div>
-          <div class="stat-desc text-xs tracking-widest uppercase">Projects delivered</div>
+          <div class="stat-desc text-xs tracking-widest uppercase">Projects Shipped</div>
         </div>
         <div class="stat px-0 pr-12">
-          <div class="stat-value font-display text-4xl font-light">US·UK·CA·BD</div>
-          <div class="stat-desc text-xs tracking-widest uppercase">Clients served</div>
+          <div class="stat-value font-display text-4xl font-light">4</div>
+          <div class="stat-desc text-xs tracking-widest uppercase">Countries</div>
         </div>
         <div class="stat px-0">
           <div class="stat-value font-display text-4xl font-light">5+</div>
@@ -52,13 +79,97 @@
   </div>
 </div>
 
+<!-- LOGO / TRUSTED BY STRIP -->
+<section class="logo-strip">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <p class="text-[10px] tracking-[0.3em] uppercase text-base-content/40 mb-5 text-center">Trusted by teams &amp; brands including</p>
+    <div class="flex flex-nowrap items-center justify-center gap-x-10 gap-y-3 text-sm tracking-[0.2em] uppercase text-base-content/50">
+      <span>Azuma Sushi</span><span class="opacity-30">·</span>
+      <span>Kelma</span><span class="opacity-30">·</span>
+      <span>Empellor CRM</span><span class="opacity-30">·</span>
+      <span>Pipeline Signals</span><span class="opacity-30">·</span>
+      <span>The Sales Factory</span><span class="opacity-30">·</span>
+      <span>Spark IT</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-wrap">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">What You Get</h2>
+    <div class="section-rule"></div>
+  </div>
+  <p class="text-base text-base-content/60 max-w-2xl mb-10 -mt-6">Three build types I ship most often — outcome-focused, launch-ready, and designed to convert.</p>
+
+  <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-8">
+        <div class="text-warning font-display italic text-sm mb-3">01 — Business Website</div>
+        <h3 class="card-title font-display text-2xl font-normal leading-snug mb-2">WordPress site that loads fast, ranks, and converts.</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed mb-6">Ideal for restaurants, agencies, and local businesses. SEO-ready structure, mobile-first design, and a conversion flow that actually turns traffic into leads.</p>
+        <a class="text-warning text-xs tracking-widest uppercase hover:underline" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like to ask about a Business Website." target="_blank" rel="noopener noreferrer">Ask about this →</a>
+      </div>
+    </div>
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-8">
+        <div class="text-warning font-display italic text-sm mb-3">02 — SaaS / Startup Landing</div>
+        <h3 class="card-title font-display text-2xl font-normal leading-snug mb-2">High-conversion landing pages with real funnels wired in.</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed mb-6">Clear messaging, CTA hierarchy, analytics and CRM integrations — so every visit is measurable and every click is trackable back to revenue.</p>
+        <a class="text-warning text-xs tracking-widest uppercase hover:underline" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like to ask about a SaaS Landing Page." target="_blank" rel="noopener noreferrer">Ask about this →</a>
+      </div>
+    </div>
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-8">
+        <div class="text-warning font-display italic text-sm mb-3">03 — Custom Web App / Portal</div>
+        <h3 class="card-title font-display text-2xl font-normal leading-snug mb-2">Bookings, dashboards, and multi-portal builds.</h3>
+        <p class="text-sm text-base-content/60 leading-relaxed mb-6">From doctor appointment portals to task management dashboards (think DigiWebNex-style) — end-to-end builds with the admin tooling your team actually needs.</p>
+        <a class="text-warning text-xs tracking-widest uppercase hover:underline" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like to ask about a Custom Web App." target="_blank" rel="noopener noreferrer">Ask about this →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-wrap pt-0">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">How we'll work together</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="grid gap-6 grid-cols-1 md:grid-cols-4">
+    <div class="border-t border-warning/40 pt-5">
+      <div class="text-xs tracking-widest uppercase text-warning mb-2">Step 01</div>
+      <h4 class="font-display text-xl font-normal mb-2">Discovery call</h4>
+      <p class="text-sm text-base-content/60 leading-relaxed">A quick WhatsApp or Zoom chat to understand your goals, audience, and scope.</p>
+    </div>
+    <div class="border-t border-warning/40 pt-5">
+      <div class="text-xs tracking-widest uppercase text-warning mb-2">Step 02</div>
+      <h4 class="font-display text-xl font-normal mb-2">Proposal &amp; timeline</h4>
+      <p class="text-sm text-base-content/60 leading-relaxed">Fixed scope, fixed price, fixed delivery date — no surprises later.</p>
+    </div>
+    <div class="border-t border-warning/40 pt-5">
+      <div class="text-xs tracking-widest uppercase text-warning mb-2">Step 03</div>
+      <h4 class="font-display text-xl font-normal mb-2">Build &amp; review</h4>
+      <p class="text-sm text-base-content/60 leading-relaxed">Staging link shared early. You review, we iterate, until it's right.</p>
+    </div>
+    <div class="border-t border-warning/40 pt-5">
+      <div class="text-xs tracking-widest uppercase text-warning mb-2">Step 04</div>
+      <h4 class="font-display text-xl font-normal mb-2">Launch + support</h4>
+      <p class="text-sm text-base-content/60 leading-relaxed">Go live with zero-downtime deploy + 14 days of post-launch support.</p>
+    </div>
+  </div>
+</section>
+
 <!-- WORK -->
 <section id="work" class="section-wrap">
   <div class="section-header">
-    <span class="section-num">01</span>
+    <span class="section-num">03</span>
     <h2 class="section-title">Selected Work</h2>
     <div class="section-rule"></div>
   </div>
+  <p class="text-base text-base-content/60 max-w-2xl mb-10 -mt-6">A sample of 16+ sites shipped for clients across 4 countries.</p>
 
   <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
@@ -219,46 +330,107 @@
   </div>
 </section>
 
-<!-- STACK -->
-<section id="stack" class="section-wrap">
+<!-- WHY CLIENTS HIRE ME -->
+<section id="why" class="section-wrap pt-0">
   <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Tech Stack</h2>
+    <span class="section-num">04</span>
+    <h2 class="section-title">Why clients hire me</h2>
     <div class="section-rule"></div>
   </div>
 
-  <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-16">
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🔷</div><div class="text-xs tracking-widest uppercase text-base-content/60">WordPress</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🐘</div><div class="text-xs tracking-widest uppercase text-base-content/60">PHP</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">⚡</div><div class="text-xs tracking-widest uppercase text-base-content/60">JavaScript</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🎨</div><div class="text-xs tracking-widest uppercase text-base-content/60">HTML5 / CSS3</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🔧</div><div class="text-xs tracking-widest uppercase text-base-content/60">Elementor / Divi</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🛒</div><div class="text-xs tracking-widest uppercase text-base-content/60">WooCommerce</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🗄️</div><div class="text-xs tracking-widest uppercase text-base-content/60">MySQL</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🎯</div><div class="text-xs tracking-widest uppercase text-base-content/60">Figma</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">🚀</div><div class="text-xs tracking-widest uppercase text-base-content/60">cPanel / Hosting</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">📈</div><div class="text-xs tracking-widest uppercase text-base-content/60">SEO Optimization</div></div></div>
-    <div class="card bg-base-200 hover:bg-base-300 transition-colors"><div class="card-body items-center text-center p-6"><div class="text-3xl mb-2">⚙️</div><div class="text-xs tracking-widest uppercase text-base-content/60">Performance Tuning</div></div></div>
+  <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-10">
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-6">
+        <div class="font-display italic text-warning text-sm mb-2">01</div>
+        <h4 class="font-display text-xl font-normal mb-2">Fast turnaround</h4>
+        <p class="text-sm text-base-content/60 leading-relaxed">Most sites launch in 2&ndash;4 weeks without cutting corners.</p>
+      </div>
+    </div>
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-6">
+        <div class="font-display italic text-warning text-sm mb-2">02</div>
+        <h4 class="font-display text-xl font-normal mb-2">Conversion-focused</h4>
+        <p class="text-sm text-base-content/60 leading-relaxed">Every section is designed to move visitors toward action.</p>
+      </div>
+    </div>
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-6">
+        <div class="font-display italic text-warning text-sm mb-2">03</div>
+        <h4 class="font-display text-xl font-normal mb-2">Post-launch support</h4>
+        <p class="text-sm text-base-content/60 leading-relaxed">14 days of free support + ongoing care plans if you need them.</p>
+      </div>
+    </div>
+    <div class="card bg-base-200 border border-base-content/10">
+      <div class="card-body p-6">
+        <div class="font-display italic text-warning text-sm mb-2">04</div>
+        <h4 class="font-display text-xl font-normal mb-2">Clear communication</h4>
+        <p class="text-sm text-base-content/60 leading-relaxed">WhatsApp-first updates, async-friendly across UK/US/CA/BD time zones.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-xs tracking-widest uppercase text-base-content/40">Built with: WordPress · PHP · JavaScript · WooCommerce · Elementor / Divi · MySQL · HTML5 / CSS3 · Figma · cPanel · SEO &amp; Performance Tuning</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-wrap pt-0">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Frequently asked</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="grid gap-3">
+    <div class="collapse collapse-arrow bg-base-200 border border-base-content/10">
+      <input type="checkbox" />
+      <div class="collapse-title font-display text-lg">How long does a project take?</div>
+      <div class="collapse-content text-sm text-base-content/70 leading-relaxed">Most business sites and landing pages launch in 2&ndash;4 weeks. Larger portals with custom dashboards typically run 4&ndash;8 weeks. You'll get a fixed timeline in the proposal.</div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-200 border border-base-content/10">
+      <input type="checkbox" />
+      <div class="collapse-title font-display text-lg">How much does it cost?</div>
+      <div class="collapse-content text-sm text-base-content/70 leading-relaxed">Pricing depends on scope, but I work with startup and SMB budgets. Share your goals on WhatsApp and you'll get a fixed quote within 24 hours — no sales pressure.</div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-200 border border-base-content/10">
+      <input type="checkbox" />
+      <div class="collapse-title font-display text-lg">Do you work with international clients?</div>
+      <div class="collapse-content text-sm text-base-content/70 leading-relaxed">Yes — I've shipped projects for clients in the UK, US, Canada, and Bangladesh. Async-friendly, WhatsApp-first communication makes time zones a non-issue.</div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-200 border border-base-content/10">
+      <input type="checkbox" />
+      <div class="collapse-title font-display text-lg">What happens after launch?</div>
+      <div class="collapse-content text-sm text-base-content/70 leading-relaxed">Every build comes with 14 days of free post-launch support for bug fixes and tweaks. For ongoing updates, hosting, and performance monitoring, monthly care plans are available.</div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-200 border border-base-content/10">
+      <input type="checkbox" />
+      <div class="collapse-title font-display text-lg">How do we start?</div>
+      <div class="collapse-content text-sm text-base-content/70 leading-relaxed">Message me on WhatsApp with a few sentences about your project. I'll reply within 2 hours with next steps and, if it's a fit, a proposal within 24 hours.</div>
+    </div>
+  </div>
+
+  <div class="mt-10 text-center">
+    <a class="btn btn-warning tracking-widest uppercase text-sm" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I have a quick question about a project." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">💬</span> Ask a Question on WhatsApp</a>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="section-wrap">
   <div class="section-header">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Get in Touch</h2>
+    <span class="section-num">06</span>
+    <h2 class="section-title">Let's build something that converts</h2>
     <div class="section-rule"></div>
   </div>
   <div class="card bg-base-200 border border-base-content/10">
-    <div class="card-body p-12 flex-row items-center justify-between flex-wrap gap-8">
-      <div>
-        <h3 class="card-title font-display text-5xl font-light mb-2">Available for new projects.</h3>
-        <p class="text-sm text-base-content/60">Based in Dhaka, Bangladesh · Open to remote work worldwide</p>
+    <div class="card-body p-8 md:p-12 flex-row items-center justify-between flex-wrap gap-8">
+      <div class="max-w-xl">
+        <h3 class="font-display text-4xl md:text-5xl font-light leading-tight mb-3">Let's build something that <span class="italic text-warning">actually converts</span>.</h3>
+        <p class="text-sm text-base-content/60 mb-2">Tell me about your project on WhatsApp and get a fixed quote within 24 hours.</p>
+        <p class="text-xs text-base-content/40 tracking-wide">Usually replies within 2 hours · Dhaka, Bangladesh (GMT+6)</p>
       </div>
       <div class="card-actions flex-col items-stretch gap-3 min-w-[280px]">
-        <a class="btn btn-warning tracking-widest uppercase text-sm" href="mailto:ishariful.info@gmail.com">✉ ishariful.info@gmail.com</a>
-        <a class="btn bg-[#0a66c2] hover:bg-[#0a66c2]/80 text-white border-0 tracking-widest uppercase text-sm" href="https://www.linkedin.com/in/ishariful-islam/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">in</span> LinkedIn Profile</a>
-        <a class="btn bg-[#25d366] hover:bg-[#25d366]/80 text-base-content border-0 tracking-widest uppercase text-sm" href="https://wa.me/8801521394158" target="_blank" rel="noopener noreferrer">💬 WhatsApp: 01521394158</a>
+        <a class="btn bg-[#25d366] hover:bg-[#25d366]/90 text-base-100 border-0 tracking-widest uppercase text-sm" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like to talk about a project." target="_blank" rel="noopener noreferrer"><span aria-hidden="true">💬</span> Message on WhatsApp</a>
+        <a class="btn btn-outline border-warning text-warning hover:bg-warning hover:text-base-100 tracking-widest uppercase text-sm" href="mailto:ishariful.info@gmail.com"><span aria-hidden="true">✉</span> ishariful.info@gmail.com</a>
+        <a class="btn btn-ghost border border-base-content/20 hover:border-base-content/40 tracking-widest uppercase text-sm" href="https://www.linkedin.com/in/ishariful-islam/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">in</span> LinkedIn Profile</a>
       </div>
     </div>
   </div>
@@ -269,19 +441,42 @@
   <nav><p class="text-xs text-base-content/40">Built with HTML · Tailwind CSS · DaisyUI</p></nav>
 </footer>
 
+<!-- FLOATING WHATSAPP CTA -->
+<a class="floating-wa" href="https://wa.me/8801521394158" data-wa-text="Hi Shariful, I'd like a quote for a website." target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.01 0C5.4 0 .03 5.37.03 11.98c0 2.11.55 4.17 1.6 5.99L0 24l6.2-1.62a11.95 11.95 0 0 0 5.8 1.48h.01c6.6 0 11.98-5.37 11.98-11.98 0-3.2-1.25-6.2-3.47-8.4zM12.02 21.3h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.22-3.68.96.98-3.59-.24-.37a9.86 9.86 0 0 1-1.52-5.29c0-5.46 4.45-9.9 9.91-9.9 2.65 0 5.14 1.03 7.01 2.9a9.84 9.84 0 0 1 2.9 7.01c0 5.46-4.45 9.9-9.94 9.9zm5.44-7.42c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.45 1.06 2.86 1.21 3.06.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
 <script>
-// Replace broken thumbnail with a lettered fallback. One delegated listener, no per-img inline handlers.
-document.addEventListener('error', (e) => {
-  const img = e.target;
-  if (!(img instanceof HTMLImageElement) || !img.dataset.fallback) return;
-  const [letter, domain] = img.dataset.fallback.split('|');
-  const div = document.createElement('div');
-  div.className = 'img-fallback';
-  const l = document.createElement('span'); l.className = 'fallback-letter'; l.textContent = letter;
-  const d = document.createElement('span'); d.className = 'fallback-domain'; d.textContent = domain;
-  div.append(l, d);
-  img.replaceWith(div);
-}, true);
+(() => {
+  // Single source of truth for the WhatsApp number.
+  const WA_NUMBER = '8801521394158';
+  for (const a of document.querySelectorAll('a[data-wa-text]')) {
+    a.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(a.dataset.waText)}`;
+  }
+
+  // Replace a broken thumbnail with a lettered fallback.
+  // Handles both network errors and "200 OK but 0x0" placeholders from the screenshot service.
+  const swap = (img) => {
+    const raw = img.dataset.fallback;
+    if (!raw) return;
+    const sep = raw.indexOf('|');
+    if (sep < 1) return;
+    const letter = raw.slice(0, sep);
+    const domain = raw.slice(sep + 1);
+    const div = document.createElement('div');
+    div.className = 'img-fallback';
+    const l = document.createElement('span'); l.className = 'fallback-letter'; l.textContent = letter;
+    const d = document.createElement('span'); d.className = 'fallback-domain'; d.textContent = domain;
+    div.append(l, d);
+    img.replaceWith(div);
+  };
+  for (const img of document.querySelectorAll('img[data-fallback]')) {
+    img.addEventListener('error', () => swap(img), { once: true });
+    const check = () => { if (img.naturalWidth === 0) swap(img); };
+    if (img.complete) check(); else img.addEventListener('load', check, { once: true });
+  }
+})();
 </script>
 
 </body>

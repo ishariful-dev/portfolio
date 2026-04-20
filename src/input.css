@@ -10,7 +10,7 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
   body { font-family: var(--font-body); }
 }
 
@@ -35,4 +35,15 @@
   .img-fallback    { @apply w-full h-full flex items-center justify-center flex-col gap-2 bg-gradient-to-br from-base-300 to-base-content/20; }
   .fallback-letter { @apply font-display text-5xl font-light text-warning opacity-60; }
   .fallback-domain { @apply text-xs text-base-content/60 tracking-wide; }
+
+  /* Thin "trusted by" logo/brand strip under hero */
+  .logo-strip { @apply py-10 border-y border-base-content/10 bg-base-200/30; }
+
+  /* Floating WhatsApp CTA pill (persistent bottom-right) */
+  .floating-wa {
+    @apply fixed z-50 bottom-5 right-5 flex items-center gap-2 px-4 py-3 rounded-full text-xs tracking-widest uppercase font-medium shadow-lg no-underline transition-transform hover:scale-[1.03];
+    background: #25d366;
+    color: #0a0a0a;
+  }
+  .floating-wa span { @apply hidden sm:inline; }
 }
